@@ -17,12 +17,23 @@ constexpr int stoi(const conststr& s, int start, int& end) {
 	return result;
 }
 
- constexpr GameState GetGameState(conststr info) {
+/*
+	Parse meta info
+	Format:
+	BoardRows BoardCols
+	PlayerX PlayerY
+*/
+constexpr GameState GetGameState(conststr info) {
 	GameState gamestate;
 	int end = 0;
-	gamestate.rows = stoi(info, 1, end);
-	int colstart = ++end;
-	gamestate.cols = stoi(info, colstart, end);
+	int start = 1;
+	gamestate.rows = stoi(info, start, end);
+	start = ++end;	// Skip space
+	gamestate.cols = stoi(info, start, end);
+	start = ++end; 	// skip new line
+	gamestate.playerx = stoi(info, start, end);
+	start = ++end;	// skip space
+	gamestate.playery = stoi(info, start, end);
 
 	return gamestate;
 }

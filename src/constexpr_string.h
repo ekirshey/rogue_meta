@@ -27,6 +27,19 @@ public:
 		return n < _sz ? _p[n] : throw std::out_of_range("");
 	}
 
+	constexpr bool equals(const conststr& str) {
+		if (str.size() != _sz) {
+			return false;
+		}
+		for (int i = 0; i < _sz; i++) {
+			if (_p[i] != str[i]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	constexpr std::size_t size() const { return _sz; }
 private:
 	const char* _p;

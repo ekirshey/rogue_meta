@@ -19,13 +19,12 @@
 
 int main(int argc, char* argv[]) {
 	constexpr auto game_info = conststr(
-#include "meta.txt"
+#include "../meta.txt"
 	);
 	constexpr auto state = GetGameState(game_info);
-	constexpr GameEngine<state.rows, state.cols> game_engine(state);
+	constexpr GameEngine<state.rows, state.cols> game_engine(state, KEYBOARD_INPUT);
 	game_engine.Draw();
 
-	system("PAUSE");
 	return 0;
 }
 		

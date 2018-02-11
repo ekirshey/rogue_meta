@@ -12,14 +12,24 @@ public:
 		, _y(y)
 	{ }
 
-	constexpr void Update() {
-		_x++;
-		_y++;
+	constexpr void Update(conststr input) {
+		if (input.equals("south") || input.equals("s") ) {
+			++_y;
+		}
+		else if (input.equals("north") || input.equals("n")) {
+			--_y;
+		}
+		else if (input.equals("west") || input.equals("w")) {
+			--_x;
+		}
+		else if (input.equals("east") || input.equals("e")) {
+			++_x;
+		}
 	}
 
-	constexpr char Icon() { return _icon; }
-	constexpr int X() { return _x; }
-	constexpr int Y() { return _y; }
+	constexpr char Icon() const { return _icon; }
+	constexpr int X() const { return _x; }
+	constexpr int Y() const { return _y; }
 private:
 	char _icon;
 	conststr _name;
